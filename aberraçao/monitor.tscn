@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://clsvx7vxnwsam"]
+
+[ext_resource type="Texture2D" uid="uid://slt3jnginis" path="res://sprites/world/monitor/monitor1.png" id="1_8e8yn"]
+[ext_resource type="Script" path="res://monitor.gd" id="1_lrq3m"]
+[ext_resource type="Texture2D" uid="uid://c1twne3yjywli" path="res://sprites/world/monitor/monitor2.png" id="2_4s4f6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nithg"]
+size = Vector2(30, 14)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5alvo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_8e8yn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_4s4f6")
+}],
+"loop": true,
+"name": &"select",
+"speed": 5.0
+}]
+
+[node name="monitor" type="Area2D"]
+script = ExtResource("1_lrq3m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-24, -3)
+shape = SubResource("RectangleShape2D_nithg")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-24, -3)
+sprite_frames = SubResource("SpriteFrames_5alvo")
+animation = &"select"
+autoplay = "default"

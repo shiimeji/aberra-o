@@ -1,0 +1,60 @@
+[gd_scene load_steps=11 format=3 uid="uid://cuugsnmyaov6i"]
+
+[ext_resource type="Shader" path="res://cockpit.gdshader" id="1_4q2no"]
+[ext_resource type="Script" path="res://world.gd" id="1_lby62"]
+[ext_resource type="Texture2D" uid="uid://p7qvhougn2vp" path="res://sprites/world/cockpit/cockpitA.png" id="2_0axtg"]
+[ext_resource type="Script" path="res://Scroll_Obj.gd" id="2_4m14r"]
+[ext_resource type="Texture2D" uid="uid://brd4ybaoyt0o6" path="res://sprites/world/cockpit/cockpitB.png" id="3_anm4j"]
+[ext_resource type="Texture2D" uid="uid://cud28ak6doyiw" path="res://sprites/world/cockpit/cockpitC.png" id="4_78def"]
+[ext_resource type="Texture2D" uid="uid://b0pvdyrhkxos7" path="res://sprites/world/cockpit/cockpitD.png" id="5_adf05"]
+[ext_resource type="PackedScene" uid="uid://clsvx7vxnwsam" path="res://monitor.tscn" id="7_1m0kc"]
+[ext_resource type="PackedScene" uid="uid://bmdbvdgj54j4c" path="res://o_2.tscn" id="7_b2l7r"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pxqv8"]
+shader = ExtResource("1_4q2no")
+shader_parameter/effect_amount = -0.0999999
+
+[node name="Node2D" type="Node2D"]
+scale = Vector2(10, 10)
+script = ExtResource("1_lby62")
+
+[node name="cockpit" type="Node2D" parent="."]
+
+[node name="CockpitA" type="Sprite2D" parent="cockpit"]
+texture_filter = 1
+position = Vector2(-72, 0)
+texture = ExtResource("2_0axtg")
+script = ExtResource("2_4m14r")
+
+[node name="CockpitB" type="Sprite2D" parent="cockpit"]
+texture_filter = 1
+position = Vector2(-24, 0)
+texture = ExtResource("3_anm4j")
+script = ExtResource("2_4m14r")
+
+[node name="CockpitC" type="Sprite2D" parent="cockpit"]
+texture_filter = 1
+position = Vector2(24, 0)
+texture = ExtResource("4_78def")
+script = ExtResource("2_4m14r")
+
+[node name="CockpitD" type="Sprite2D" parent="cockpit"]
+texture_filter = 1
+position = Vector2(72, 0)
+texture = ExtResource("5_adf05")
+script = ExtResource("2_4m14r")
+
+[node name="o2" parent="cockpit" instance=ExtResource("7_b2l7r")]
+position = Vector2(-73, 0)
+
+[node name="monitor" parent="cockpit" instance=ExtResource("7_1m0kc")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_pxqv8")
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+mouse_filter = 2

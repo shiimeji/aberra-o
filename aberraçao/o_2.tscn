@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://bmdbvdgj54j4c"]
+
+[ext_resource type="Texture2D" uid="uid://bg4badggcjy0s" path="res://sprites/world/o2/O2cilinder1.png" id="1_5e5w3"]
+[ext_resource type="Script" path="res://o_2.gd" id="1_05n44"]
+[ext_resource type="Texture2D" uid="uid://b6lpdsb6guvhc" path="res://sprites/world/o2/O2cilinder2.png" id="2_ovvt2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t20hq"]
+size = Vector2(10, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hou0c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_5e5w3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ovvt2")
+}],
+"loop": true,
+"name": &"select",
+"speed": 5.0
+}]
+
+[node name="o2" type="Area2D"]
+script = ExtResource("1_05n44")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_t20hq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0.5, 0)
+sprite_frames = SubResource("SpriteFrames_hou0c")
+animation = &"select"
